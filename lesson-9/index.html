@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.JS Tutorials</title>
+
+	<link rel="stylesheet" href="styles.css">
+	<script src="../vue.js"></script>
+</head>
+
+<body>
+
+	<div id="vue-app">
+
+		<h1>Computed Properties</h1>
+
+		<button v-on:click="a++">Add to A</button>
+		<button v-on:click="b++">Add to B</button>
+
+		<p>A - {{ a }}</p>
+		<p>B - {{ b }}</p>
+
+		<p>Age + A == {{ addToA }}</p>
+		<p>Age + B == {{ addToB }}</p>
+		<!--
+			How do that methods work?
+			
+			EVERY time a value changes (value comes from "Add to A" or "Add to B" button), Vue.js is gonna look at that functions:
+			
+			- addToA()
+			- addToB()
+			
+			and it's gonna RUN THEM BOTH !!!
+			
+			EVERY TIME VALUE CHANGES !!!
+			
+			To make it more efficient, we can use COMPUTED PROPERTIES (this gonna be updated only when one of these values update) !!!
+		-->
+	</div>
+
+	<script src="app.js"></script>
+</body>
+
+</html>
