@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.JS Tutorials</title>
+
+	<link rel="stylesheet" href="styles.css">
+	<script src="../vue.js"></script>
+</head>
+
+<body>
+
+	<div id="vue-app">
+
+		<h1>Conditionals</h1>
+
+		<button v-on:click="error = !error">Toggle Error</button>
+		<button v-on:click="success = !success">Toggle Success</button>
+		<button v-on:click="show = !show">Toggle Show</button>
+
+		<p v-if="error">There has been an error!</p>
+		<p v-else-if="success">There is success!</p>
+
+		<p v-show="show">Show</p>
+
+		<!-- Difference between "v-if" and "v-show" is:
+				*) if "v-if" is FALSE, element will be removed from the DOM and replaced with comment
+				*) if "v-show" is FALSE, element is NOT removed but "display: none;" style is applied !!!
+		  -->
+
+	</div>
+
+	<script src="app.js"></script>
+</body>
+
+</html>
