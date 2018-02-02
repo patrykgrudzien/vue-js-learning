@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.JS Tutorials</title>
+
+	<link rel="stylesheet" href="styles.css">
+	<script src="../vue.js"></script>
+</head>
+
+<body>
+
+	<div id="vue-app">
+
+		<h1>Looping with v-for</h1>
+
+		<!------------------------------------------------------------------------------------------------->
+		<h3>Characters:</h3>
+		<ul>
+			<li v-for="character in characters">{{ character }}</li>
+		</ul>
+
+		<h3>Ninjas:</h3>
+		<ul>
+			<li v-for="ninja in ninjas">{{ `${ninja.name} - ${ninja.age}` }}</li>
+		</ul>
+
+		<!------------------------------------------------------------------------------------------------->
+		<h3>Ninjas with indexes:</h3>
+		<ul>
+			<li v-for="(ninja, index) in ninjas">{{ `${index}. ${ninja.name} - ${ninja.age}` }}</li>
+		</ul>
+
+		<!-- We can create e.g.
+				<div>
+					<h3>{{ index }}</h3>
+					<p>{{ ninja.name }}</p>
+				</div>
+				
+				But looping through "ninjas" array I'll create 3 separate <div> which are not required to be present.
+				
+				That's why, better way is to use <template> tag instead of <div> which will inject everything what is inside without creating 3 separate containers.
+		  -->
+
+		<!------------------------------------------------------------------------------------------------->
+		<h3>Ninjas using template tag:</h3>
+		<template v-for="(ninja, index) in ninjas">
+			<h4>Index {{ index }}</h4>
+			<p>{{ ninja.name }} - {{ ninja.age }}</p>
+		</template>
+
+		<!------------------------------------------------------------------------------------------------->
+		<h3>Looping through properties in each individual object:</h3>
+		<template v-for="(ninja, index) in ninjas">
+			<h4>Object number {{ index }}. </h4>
+			<div v-for="(val, key) in ninja">
+				<p>{{ key }} - {{ val }}</p>
+			</div>
+		</template>
+
+	</div>
+
+	<script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.JS Tutorials</title>
+
+	<link rel="stylesheet" href="styles.css">
+	<script src="../vue.js"></script>
+</head>
+
+<body>
+
+	<div id="vue-app-one">
+
+		<h3>Vue Instance Number 1</h3>
+		<h5>{{ title }}</h5>
+		<p>{{ greet }}</p>
+	</div>
+
+
+	<div id="vue-app-two">
+
+		<h3>Vue Instance Number 2</h3>
+		<h5>{{ title }}</h5>
+		<p>{{ greet }}</p>
+		<button v-on:click="changeTitle">Change App One Title</button>
+	</div>
+
+	<script src="app.js"></script>
+</body>
+
+</html>

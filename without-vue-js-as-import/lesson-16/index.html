@@ -12,10 +12,13 @@
 <body>
 
 	<div id="vue-app">
+		<h2>Refs</h2>
 
-		<h1>Looping with v-for</h1>
+		<!-- We want to get access to this element using $refs -->
+		<input type="text" ref="myInputReference">
 
-
+		<button v-on:click="readRefs">Submit</button>
+		<p>{{ inputValue }}</p>
 	</div>
 
 	<script src="app.js"></script>
