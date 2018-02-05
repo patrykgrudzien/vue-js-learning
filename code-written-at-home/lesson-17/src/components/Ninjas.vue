@@ -11,18 +11,18 @@
 
 <script>
   export default {
+    // we want to RECEIVE ninjas array[] from App.vue
+    props: {
+      // instead of writing "props: ['ninjas']" we can use "props: {}" to add validation to object we want to receive
+      ninjas: {
+        type: Array,
+        required: true
+      }
+    },
     data() {
-      return {
-        ninjas: [
-          {name: 'Ryu', speciality: 'Vue Components', show: false},
-          {name: 'Crystal', speciality: 'HTML', show: false},
-          {name: 'Hitoshi', speciality: 'Click Events', show: false},
-          {name: 'Tango', speciality: 'Conditionals', show: false},
-          {name: 'Kami', speciality: 'Webpack', show: false},
-          {name: 'Patrick', speciality: 'Java', show: false},
-        ]
-      };
-    }
+      return {};
+    },
+    methods: {}
   }
 </script>
 

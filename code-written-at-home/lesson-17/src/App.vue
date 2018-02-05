@@ -1,8 +1,10 @@
 <template>
   <div>
-    <header-component/>
-    <ninjas-component/>
-    <footer-component/>
+    <header-component v-bind:title="title" v-on:change-title-event="updateTitle($event)"/>
+    <!-- SENDING ninjas array[] to Ninjas.vue -->
+    <!-- we use "v-bind" to make it dynamic -->
+    <ninjas-component v-bind:ninjas="ninjas"/>
+    <footer-component v-bind:title="title"/>
   </div>
 </template>
 
@@ -18,7 +20,22 @@
       'footer-component': FooterComponent
     },
     data() {
-      return {};
+      return {
+        ninjas: [
+          {name: 'Ryu', speciality: 'Vue Components', show: false},
+          {name: 'Crystal', speciality: 'HTML', show: false},
+          {name: 'Hitoshi', speciality: 'Click Events', show: false},
+          {name: 'Tango', speciality: 'Conditionals', show: false},
+          {name: 'Kami', speciality: 'Webpack', show: false},
+          {name: 'Patrick', speciality: 'Java', show: false},
+        ],
+        title: 'Vue Ninjas'
+      };
+    },
+    methods: {
+      updateTitle(payload) {
+        this.title = payload;
+      }
     }
   };
 </script>
