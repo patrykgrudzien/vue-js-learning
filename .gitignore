@@ -9,8 +9,4 @@ yarn-error.log
 *.suo
 *.ntvs*
 *.njsproj
-<<<<<<< HEAD
 *.sln
-=======
-*.sln
->>>>>>> 3ce396a1e109cf7c63fe7469483bd5fe6d064821
