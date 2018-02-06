@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   // it has to be updated during creating new folder for new lesson
-  entry: './src/lessons-17-24/main.js',
+  entry: './src/lesson-32/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
