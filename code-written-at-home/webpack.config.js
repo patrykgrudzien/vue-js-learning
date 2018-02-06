@@ -2,7 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './src/main.js',
+  // it has to be updated during creating new folder for new lesson
+  entry: './src/lessons-17-24/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
