@@ -1,7 +1,7 @@
 <template>
   <div id="add-blog">
     <h2>Add a New Blog Post</h2>
-    <form>
+    <form v-if="!isFormSubmitted">
       <!-- BLOG TITLE -->
       <label for="blog-title">Blog Title:</label>
       <input v-model.lazy="blog.title" id="blog-title" type="text" required>
@@ -35,23 +35,33 @@
         <option v-for="author in authors">{{ author }}</option>
       </select>
 
-      <!-- PREVIEW -->
-      <div id="preview">
-        <h3>Preview Blog</h3>
-        <p>Blog title: {{ blog.title }}</p>
-        <p>Blog content:</p>
-        <p>{{ blog.blogContent }}</p>
-        <p>Blog Categories:</p>
-        <ul>
-          <li v-for="category in blog.categories">{{ category }}</li>
-        </ul>
-        <p>Author: {{ blog.author }}</p>
-      </div>
+      <!-- SUBMIT THE FORM (we must prevent default behavior for submitting form) -->
+      <button v-on:click.prevent="post">Add Blog</button>
     </form>
+
+    <div v-if="isFormSubmitted">
+      <h3>Thanks for adding your post!</h3>
+    </div>
+
+    <!-- PREVIEW -->
+    <div id="preview">
+      <h3>Preview Blog</h3>
+      <p>Blog title: {{ blog.title }}</p>
+      <p>Blog content:</p>
+      <p>{{ blog.blogContent }}</p>
+      <p>Blog Categories:</p>
+      <ul>
+        <li v-for="category in blog.categories">{{ category }}</li>
+      </ul>
+      <p>Author: {{ blog.author }}</p>
+    </div>
+
   </div>
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     data() {
       return {
@@ -61,7 +71,26 @@
           categories: [],
           author: ''
         },
-        authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator']
+        authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
+        isFormSubmitted: false
+      }
+    },
+    methods: {
+      // SMALL NOTE: I had to replace VUE_RESOURCE with AXIOS (that first one didn't want to wok)
+      post() {
+        // $http comes from VUE-RESOURCE
+        // we don't have now any service, database to make post to (we're gonna use online service)
+        axios.post('https://jsonplaceholder.typicode.com/posts', {
+          // body to post
+          title: this.blog.title,
+          body: this.blog.content,
+          userId: 1
+        }).then((response) => {
+          this.isFormSubmitted = true;
+          console.log(response);
+        }).catch((error) => {
+          console.log(error);
+        });
       }
     }
   };
